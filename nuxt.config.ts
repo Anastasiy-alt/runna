@@ -10,4 +10,5 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/runna/"
   },
+    ssr: false,
 })
