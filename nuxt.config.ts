@@ -7,4 +7,7 @@ export default defineNuxtConfig({
     autoImportPath: '~/assets/icon',
     componentPrefix: 'Icon'
   },
+  app: {
+    baseURL: "/runna/"
+  },
 })
