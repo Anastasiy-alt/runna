@@ -1,4 +1,7 @@
 <script setup>
+const props = defineProps([
+    'corr'
+])
 const data = {
   title: 'Анализ сезонности'
 }
@@ -12,8 +15,8 @@ const data = {
         сравнению с прошлым месяцем. Наибольшую прибыль вам приносят товары: «Палатка» и «Термос», количество продаж
         выросло на 48% по сравнению с прошлым месяцем.</p>
     </div>
-    <div class="corr">
-      <p class="corr__value medium-m">0,86</p>
+    <div class="corr" v-if="corr">
+      <p class="corr__value medium-m">{{corr}}</p>
       <p class="corr__text regular-s">Корреляция между финансовой ситуацией и сезонностью</p>
     </div>
     <div class="season">

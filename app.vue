@@ -1,9 +1,9 @@
 <template>
-  <div class="block">
-    <BlockRight />
-    <BlockLeft />
+<!--  <Modal />-->
 
-<!--    <ElementsGraph/>-->
+  <div class="block">
+    <BlockRight cost="1 000 000, 00 ₽" />
+    <BlockLeft :corr="'0,86'" />
   </div>
 </template>
 
