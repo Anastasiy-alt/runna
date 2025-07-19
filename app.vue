@@ -1,48 +1,58 @@
 <template>
-<!--  <Modal />-->
-
-  <div class="block">
-    <BlockRight cost="1 000 000, 00 ₽" />
-    <BlockLeft :corr="'0,86'" />
-  </div>
+  <NuxtPage/>
 </template>
 
 <style lang="sass">
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap')
 p
+  font-family: Inter, serif
   margin: 0
   padding: 0
+  letter-spacing: 0
 
 .regular-s
-  font-family: Inter, serif
   font-weight: 400
   font-size: 12px
   line-height: 16px
-  letter-spacing: 0
+
 .regular-m
-  font-family: Inter, serif
   font-weight: 400
   font-size: 14px
   line-height: 18px
-  letter-spacing: 0
+
 .regular-xxl
-  font-family: Inter, serif
   font-weight: 400
   font-size: 20px
   line-height: 30px
-  letter-spacing: 0
+
 .medium-m
-  font-family: Inter, serif
   font-weight: 500
   font-size: 14px
   line-height: 18px
-  letter-spacing: 0
+
+.medium-l
+  font-weight: 500
+  font-size: 16px
+  line-height: 24px
+
 .medium-xl
-  font-family: Inter, serif
   font-weight: 500
   font-size: 18px
   line-height: 28px
-  letter-spacing: 0
+
+.medium-value
+  font-weight: 500
+  font-size: 40px
+  line-height: 40px
+.bold-xxxl
+  font-weight: 700
+  font-size: 24px
+  line-height: 30px
+
+.bold-xxl
+  font-weight: 700
+  font-size: 20px
+  line-height: 30px
 
 .block
   display: flex

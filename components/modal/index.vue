@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<ElementsInput :placeholder="'test'" :type="'text'"/>
+  <ElementsInput :placeholder="'test'" :type="'text'"/>
 </template>
 
 <style lang="sass">
