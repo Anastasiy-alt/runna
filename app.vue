@@ -1,5 +1,16 @@
 <template>
-  <NuxtPage/>
+  <div class="page">
+    <div class="sidebar">
+      <img src="/assets/sidebar.png" alt="">
+      <div class="analytics-button" @click="() => navigateTo('analytics')"></div>
+      <div class="lk-button" @click="() => navigateTo('/')"></div>
+
+    </div>
+
+
+    <NuxtPage class="page-nuxt"/>
+  </div>
+
 </template>
 
 <style lang="sass">
@@ -10,6 +21,28 @@ p
   padding: 0
   letter-spacing: 0
 
+.page
+  display: flex
+  flex-direction: row
+  gap: 20px
+.sidebar
+  position: relative
+.analytics-button
+  position: absolute
+  top: 510px
+  left: 40px
+  height: 50px
+  width: 250px
+  cursor: pointer
+.lk-button
+  position: absolute
+  top: 30px
+  left: 20px
+  height: 50px
+  width: 250px
+  cursor: pointer
+.page-nuxt
+  margin-top: 100px
 .regular-s
   font-weight: 400
   font-size: 12px
@@ -59,3 +92,5 @@ p
   flex-direction: row
   gap: 10px
 </style>
+<script setup lang="ts">
+</script>

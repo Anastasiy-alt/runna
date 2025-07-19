@@ -46,6 +46,7 @@ const data = {
   border-radius: 8px
   padding: 20px
   box-sizing: border-box
+  height: fit-content
 
 .left__analyze
   position: relative

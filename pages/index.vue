@@ -257,63 +257,60 @@ const onSwiper = (instance) => {
 
 <template>
   <div class="lk">
-
-
-    <article class="bills-block lk-block">
-      <p class="bills-block__title bold-xxl">Ваши счета</p>
-      <div class="bills-block__value-block">
-        <p class="bills-block__description medium-l">Доступно на ваших счетах</p>
-        <p class="bills-block__value medium-value">1 000 000, 00 ₽ </p>
-        <div class="bills-block__download regular-s"><p>Выписка по счету</p>
-          <IconDownload/>
+    <div class="lk__column">
+      <article class="bills-block lk-block">
+        <p class="bills-block__title bold-xxl">Ваши счета</p>
+        <div class="bills-block__value-block">
+          <p class="bills-block__description medium-l">Доступно на ваших счетах</p>
+          <p class="bills-block__value medium-value">1 000 000, 00 ₽ </p>
+          <div class="bills-block__download regular-s"><p>Выписка по счету</p>
+            <IconDownload/>
+          </div>
         </div>
-      </div>
-      <Swiper
-          :slidesPerView="'auto'"
-          :space-between="16"
-          class="lk-slider__swiper"
-          @swiper="onSwiper">
-        <SwiperSlide v-for="(item, idx) in billsData" :key="idx" class="lk-slider__slide">
-          <LkBills :all="idx === 0" :title="item.title" :value="item.value"/>
-        </SwiperSlide>
-      </Swiper>
-    </article>
-    <article class="tax-block lk-block">
-      <p class="tax-block__title bold-xxl">Налоговые обновления</p>
-      <div class="tax-block__taxes">
-        <LkTax v-for="(tax, idx) in taxData" :key="idx" :title="tax.title" :description="tax.description"/>
-      </div>
-    </article>
-    <article class="pay-block lk-block">
-      <p class="pay-block bold-xxl">Счета на оплату</p>
-      <div class="pay-block__pays">
-        <LkPay v-for="(pay, idx) in payData"
-               :key="idx"
-               :date="pay.date"
-               :number="pay.number"
-               :value="pay.value"
-               :status="pay.status"/>
-      </div>
-    </article>
+        <Swiper
+            :slidesPerView="'auto'"
+            :space-between="16"
+            class="lk-slider__swiper"
+            @swiper="onSwiper">
+          <SwiperSlide v-for="(item, idx) in billsData" :key="idx" class="lk-slider__slide">
+            <LkBills :all="idx === 0" :title="item.title" :value="item.value"/>
+          </SwiperSlide>
+        </Swiper>
+      </article>
+      <article class="tax-block lk-block">
+        <p class="tax-block__title bold-xxl">Налоговые обновления</p>
+        <div class="tax-block__taxes">
+          <LkTax v-for="(tax, idx) in taxData" :key="idx" :title="tax.title" :description="tax.description"/>
+        </div>
+      </article>
+    </div>
+    <div class="lk__column">
+      <article class="pay-block lk-block">
+        <p class="pay-block bold-xxl">Счета на оплату</p>
+        <div class="pay-block__pays">
+          <LkPay v-for="(pay, idx) in payData"
+                 :key="idx"
+                 :date="pay.date"
+                 :number="pay.number"
+                 :value="pay.value"
+                 :status="pay.status"/>
+        </div>
+      </article>
+    </div>
   </div>
 </template>
 
 <style lang="sass">
 @use "/const/color"
 .lk
-  display: grid
+  display: flex
+  flex-direction: row
   gap: 25px
-  grid-template-areas: 'bills pay' 'tax pay'
-  justify-content: center
 
-.bills-block
-  grid-area: bills
-
-.tax-block
-  grid-area: tax
-
-.pay-block
-  grid-area: pay
+.lk__column
+  display: flex
+  flex-direction: column
+  gap: 25px
 
 .lk-slider__slide
   width: fit-content
