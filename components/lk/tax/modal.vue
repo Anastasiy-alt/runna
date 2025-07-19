@@ -14,6 +14,7 @@ const closeModal = ref(true)
       <IconCross class="tax-modal__close-button" filled @click="$emit('close')"/>
       <p class="tax-modal__title bold-xxxl">{{ title }}</p>
       <p class="tax-modal__description regular-m">{{ description }}</p>
+      <ElementsButton class="tax-modal__button" :text="'Исправлено'" />
     </div>
   </div>
 </template>
@@ -21,6 +22,8 @@ const closeModal = ref(true)
 <style lang="sass">
 @use "/const/color"
 @use "/const/mixin"
+.tax-modal__button
+  margin: 0 auto
 .tax-modal__close-button
   width: 24px
   height: 24px
