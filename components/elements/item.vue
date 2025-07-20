@@ -1,4 +1,9 @@
 <script setup>
+const props = defineProps([
+  'title',
+  'description'
+])
+
 function toggleDescription(evt) {
   evt.target.closest('.item').classList.toggle('active')
 }
@@ -7,14 +12,14 @@ function toggleDescription(evt) {
 <template>
   <div class="item">
     <div class="item__title" @click="toggleDescription">
-      <p class="regular-m">Увеличить цветовую палитру термосов</p>
+      <p class="regular-m">{{ title }}</p>
       <IconArrow class="item__icon"/>
     </div>
     <div class="item__description">
       <div class="item__description-block">
         <i></i>
         <ElementsTag/>
-        <p class="item__description-text regular-m">Увеличение ... на , ... на n% m%</p>
+        <p class="item__description-text regular-m">{{ description }}</p>
       </div>
     </div>
   </div>
@@ -55,6 +60,13 @@ function toggleDescription(evt) {
   align-items: center
   justify-content: space-between
 
+  p
+    -webkit-line-clamp: 2
+    display: -webkit-box
+    -webkit-box-orient: vertical
+    overflow: hidden
+    text-overflow: ellipsis
+
 .item__icon
   width: 24px
   height: 24px
@@ -83,7 +95,8 @@ function toggleDescription(evt) {
     box-sizing: border-box
 
 .item.active .item__description, .item.active .item__description-block
-  max-height: 100px
+  max-height: 300px
+  //overflow: auto
 
 .item.active .item__icon
   transform: rotate(180deg)

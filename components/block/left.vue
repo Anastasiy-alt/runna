@@ -1,34 +1,45 @@
 <script setup>
 const props = defineProps([
-    'corr'
+  'corr',
+  'analysis',
+  'season'
 ])
-const data = {
-  title: 'Анализ сезонности'
+
+const modalOpen = ref(false)
+
+function closeModal() {
+  modalOpen.value = false
+}
+
+function handleOpenModal() {
+  modalOpen.value = true
 }
 </script>
 
 <template>
+  <ElementsModal v-show="modalOpen" @close="closeModal">
+
+  </ElementsModal>
   <article class="left">
-    <p class="medium-xl">{{ data.title }}</p>
+    <p class="medium-xl">{{ analysis.title }}</p>
     <div class="left__analyze">
-      <p class="left__analyze-text regular-s">Общий спрос по рынку на товары категории «Спорт и отдых» вырос в апреле на 36% по
-        сравнению с прошлым месяцем. Наибольшую прибыль вам приносят товары: «Палатка» и «Термос», количество продаж
-        выросло на 48% по сравнению с прошлым месяцем.</p>
+      <p class="left__analyze-text regular-s">{{ analysis.value }}</p>
     </div>
     <div class="corr" v-if="corr">
-      <p class="corr__value medium-m">{{corr}}</p>
-      <p class="corr__text regular-s">Корреляция между финансовой ситуацией и сезонностью</p>
+      <p class="corr__value medium-m">{{ corr.value }}</p>
+      <p class="corr__text regular-s">{{ corr.title }}</p>
     </div>
     <div class="season">
       <p class="medium-m">Предложения</p>
       <div class="season__block">
-        <ElementsItem style="z-index: 15" />
-        <ElementsItem style="z-index: 14"  />
-        <ElementsItem style="z-index: 13"  />
-        <ElementsItem style="z-index: 12"  />
+        <ElementsItem v-for="(item, idx) in season"
+                      :style="`z-index: ${season.length - idx}`"
+                      :title="item.title"
+                      :description="item.description"
+        />
       </div>
     </div>
-    <ElementsButton text="Консультация со специалистом" />
+    <ElementsButton @click="handleOpenModal" text="Консультация со специалистом"/>
   </article>
 </template>
 

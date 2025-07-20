@@ -11,6 +11,9 @@ import {
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
 
+const props = defineProps([
+    'graph',
+])
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -21,13 +24,13 @@ ChartJS.register(
     Legend
 )
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: props.graph.labels,
   datasets: [
     {
       borderColor: '#EF3124',
       pointBackgroundColor: '#EF3124',
       pointBorderColor: '#fff',
-      data: [40000, 39000, 10000, 40000, 39000, 80000, 40000],
+      data: props.graph.data,
       tension: 0.3
     }
   ]
