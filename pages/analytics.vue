@@ -68,6 +68,7 @@ const dataSecond = {
 
 <template>
   <div class="analytics">
+    <ElementsUpload />
     <div class="block">
       <BlockRight :cost="dataFirst.cost"
                   :title="dataFirst.title"

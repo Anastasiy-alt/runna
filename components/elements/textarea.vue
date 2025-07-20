@@ -13,13 +13,13 @@ const visibleClear = ref(false);
 const focusInput = ref(false)
 
 const ClearInput = () => {
-  const inputField = document.querySelector(".input__field");
+  const inputField = document.querySelector(".textarea__field");
   inputField.value = "";
   visibleClear.value = false;
 };
 
 const CheckInput = () => {
-  const inputField = document.querySelector(".input__field");
+  const inputField = document.querySelector(".textarea__field");
   if (!props.error) {
     visibleClear.value = inputField.value !== "";
   }
@@ -31,7 +31,7 @@ const UnfocusInput = () => {
 };
 
 const OnClickInput = () => {
-  const inputField = document.querySelector(".input__field");
+  const inputField = document.querySelector(".textarea__field");
   if (inputField.value !== "") {
     if (!props.error) {
       visibleClear.value = true;
@@ -42,10 +42,10 @@ const OnClickInput = () => {
 </script>
 
 <template>
-  <div class="input">
-    <input
-        :class="{ input__field_error: error }"
-        class="input__field regular-m"
+  <div class="textarea">
+    <textarea
+        :class="{ textarea__field_error: error }"
+        class="textarea__field regular-m"
         :type="type"
         :placeholder="placeholder"
         :disabled="disabled"
@@ -56,8 +56,8 @@ const OnClickInput = () => {
         @blur="UnfocusInput"
     />
     <label
-        :class="{ input__label_error: error }"
-        class="input__label font-input-label"
+        :class="{ textarea__label_error: error }"
+        class="textarea__label font-input-label"
         for="input-email"
     >
       {{ errorText ? errorText : label }}
@@ -69,16 +69,17 @@ const OnClickInput = () => {
 @use "/const/color"
 @use "/const/mixin"
 
-.input
+.textarea
   position: relative
   box-sizing: border-box
   display: flex
   flex-direction: column
   gap: 4px
 
-.input__field
+.textarea__field
+  resize: vertical
   box-sizing: border-box
-  max-height: 47px
+  height: 190px
   padding: 15px
   border-radius: 16px
   background-color: color.$white
@@ -86,23 +87,23 @@ const OnClickInput = () => {
   outline: none
   border: 1px solid color.$gray
 
-.input__field::placeholder
+.textarea__field::placeholder
   color: color.$light-gray
 
-.input__label
+.textarea__label
   color: color.$gray
 
-.input__error
+.textarea__error
   position: absolute
   z-index: 5
   top: 26px
   right: 12px
   transform: translateY(-50%)
 
-.input__error path
+.textarea__error path
   stroke: color.$red
 
-.input__clear
+.textarea__clear
   display: none
   cursor: pointer
   position: absolute
@@ -114,22 +115,22 @@ const OnClickInput = () => {
   height: 20px
   @include mixin.transition
 
-.input__clear path
+.textarea__clear path
   stroke: black
 
-.input__clear_visible
+.textarea__clear_visible
   display: block
 
-.input__clear_unfocus
+.textarea__clear_unfocus
   opacity: 0
 
-.input__field_error
+.textarea__field_error
   color: color.$red
   border: 1px solid color.$red
 
-.input__label_error
+.textarea__label_error
   color: color.$red
 
-.input__field:disabled::placeholder, .input__field:disabled ~ .input__label
+.textarea__field:disabled::placeholder, .textarea__field:disabled ~ .textarea__label
   color: color.$gray
 </style>

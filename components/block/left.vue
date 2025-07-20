@@ -17,8 +17,12 @@ function handleOpenModal() {
 </script>
 
 <template>
-  <ElementsModal v-show="modalOpen" @close="closeModal">
-
+  <ElementsModal class="request-modal" v-show="modalOpen" @close="closeModal">
+    <p class="request-modal__title medium-xl">Запись к специалисту</p>
+    <ElementsInput :required="true" :placeholder="'Введите ваше имя'" :type="'text'"/>
+    <ElementsInput :required="true" :placeholder="'Введите ваш e-mail. Мы направим ссылку на Zoom'" :type="'email'"/>
+    <ElementsTextarea :required="true" :placeholder="'Опишите проблему'" :type="'textarea'"/>
+    <ElementsButton type="submit" class="request-modal__button" text="Отправить заявку"/>
   </ElementsModal>
   <article class="left">
     <p class="medium-xl">{{ analysis.title }}</p>
@@ -47,6 +51,11 @@ function handleOpenModal() {
 @use "/const/color"
 @use "/const/mixin"
 
+.request-modal__title
+  text-align: center
+
+.request-modal__button
+  margin: 0 auto
 
 .left
   width: 450px
