@@ -1,6 +1,6 @@
 <script setup>
 const dataFirst = {
-  title: 'Затраты',
+  title: 'Прибыль',
   cost: '1 000 000, 00 ₽',
   correlation: {
     title: 'Корреляция между финансовой ситуацией и сезонностью',
