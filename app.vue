@@ -17,7 +17,8 @@ p
   margin: 0
   padding: 0
   letter-spacing: 0
-
+.nuxt-icon
+  margin: 0 !important
 .page
   display: flex
   flex-direction: row
@@ -79,6 +80,11 @@ p
   font-weight: 500
   font-size: 40px
   line-height: 40px
+
+.bold-l
+  font-weight: 700
+  font-size: 16px
+  line-height: 24px
 
 .bold-xxxl
   font-weight: 700

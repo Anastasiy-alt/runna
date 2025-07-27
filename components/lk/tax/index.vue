@@ -20,7 +20,9 @@ function closeModal() {
 </script>
 
 <template>
-  <LkTaxModal v-show="modalOpen" :title="title" :description="description" @close="closeModal"/>
+  <Teleport to="body">
+    <LkTaxModal v-show="modalOpen" :title="title" :description="description" @close="closeModal"/>
+  </Teleport>
   <div class="tax" @click="handleClickTax">
     <div class="tax__status-block">
       <IconStatus class="tax__status-icon" filled/>

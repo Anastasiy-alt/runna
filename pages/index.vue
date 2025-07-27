@@ -3,7 +3,8 @@ import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
 
 const swiper = ref(null);
-
+const swiperTax = ref(null);
+const swiperTask = ref(null);
 const billsData = [
   {
     title: 'Все счета',
@@ -250,8 +251,47 @@ const payData = [
     status: 'Ожидает оплаты',
   }
 ]
+const taskData = [
+  {
+    title: 'Налог на прибыль',
+    date: '15.06.2025',
+    value: '50 567',
+    status: 'В процессе'
+  },
+  {
+    title: 'Налог на прибыль',
+    date: '15.06.2025',
+    value: '10 567',
+    status: 'Обработка платежа'
+  },
+  {
+    title: 'Налог на прибыль',
+    date: '15.06.2025',
+    value: '50 900',
+    status: 'Не просмотрено'
+  },
+  {
+    title: 'Налог на прибыль',
+    date: '15.06.2025',
+    value: '50 100',
+    status: 'Не выполнено'
+  },
+  {
+    title: 'Налог на прибыль',
+    date: '15.06.2025',
+    value: '50 000',
+    status: 'Выполнено'
+  }
+]
 const onSwiper = (instance) => {
   swiper.value = instance;
+};
+
+const onSwiperTax = (instance) => {
+  swiperTax.value = instance;
+};
+const onSwiperTask = (instance) => {
+  swiperTask.value = instance;
 };
 </script>
 
@@ -278,10 +318,40 @@ const onSwiper = (instance) => {
         </Swiper>
       </article>
       <article class="tax-block lk-block">
-        <p class="tax-block__title bold-xxl">Налоговые обновления</p>
-        <div class="tax-block__taxes">
-          <LkTax v-for="(tax, idx) in taxData" :key="idx" :title="tax.title" :description="tax.description"/>
+        <div class="tax-block__title-block">
+          <p class="tax-block__title bold-xxl">Налоговые обновления</p>
+          <div class="tax-block__swiper-pag">
+            <IconSwiperArrow @click="swiperTax?.slidePrev()" class="tax-block__swiper-pag-icon" filled/>
+            <IconSwiperArrow @click="swiperTax?.slideNext()" class="tax-block__swiper-pag-icon" filled/>
+          </div>
         </div>
+        <Swiper
+            :slidesPerView="'auto'"
+            :space-between="16"
+            class="tax-block__taxes"
+            @swiper="onSwiperTax">
+          <SwiperSlide v-for="(tax, idx) in taxData">
+            <LkTax :key="idx" :title="tax.title" :description="tax.description"/>
+          </SwiperSlide>
+        </Swiper>
+      </article>
+      <article class="lk-block task-block">
+        <div class="tax-block__title-block">
+          <p class="tax-block__title bold-xxl">Список налоговых задач</p>
+          <div class="tax-block__swiper-pag">
+            <IconSwiperArrow @click="swiperTask?.slidePrev()" class="tax-block__swiper-pag-icon" filled/>
+            <IconSwiperArrow @click="swiperTask?.slideNext()" class="tax-block__swiper-pag-icon" filled/>
+          </div>
+        </div>
+        <Swiper
+            :slidesPerView="'auto'"
+            :space-between="16"
+            class="tax-block__taxes"
+            @swiper="onSwiperTask">
+          <SwiperSlide v-for="(t, idx) in taskData">
+            <LkTaskItem :title="t.title" :value="t.value" :date="t.date" :status="t.status"/>
+          </SwiperSlide>
+        </Swiper>
       </article>
     </div>
     <div class="lk__column">
@@ -349,9 +419,30 @@ const onSwiper = (instance) => {
   width: fit-content
 
 .tax-block__taxes
-  display: grid
-  grid-template-columns: 1fr 1fr
-  gap: 30px 20px
+  width: 100%
+
+  .swiper-slide
+    width: fit-content
+
+.tax-block__title-block
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+
+.tax-block__swiper-pag
+  display: flex
+  flex-direction: row
+  gap: 5px
+
+.tax-block__swiper-pag-icon
+  width: 27px
+  height: 27px
+  min-width: 27px
+  min-height: 27px
+  cursor: pointer
+
+.tax-block__swiper-pag-icon:first-child
+  transform: scaleX(-1)
 
 .pay-block
   background: color.$bg-gray
