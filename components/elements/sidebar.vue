@@ -30,7 +30,7 @@ const dataThird = [
     </ul>
     <ul class="sidebar__list sidebar__list_second">
       <li class="regular-l sidebar__list-item" v-for="i in dataSecond">{{ i }}</li>
-      <a href="/analytics" class="regular-l sidebar__list-item">Аналитика</a>
+      <a href="/runna/analytics" class="regular-l sidebar__list-item">Аналитика</a>
     </ul>
     <ul class="sidebar__list">
       <li class="regular-l sidebar__list-item" v-for="i in dataThird">{{ i }}</li>
