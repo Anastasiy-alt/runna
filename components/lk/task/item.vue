@@ -8,6 +8,7 @@ const props = defineProps([
 
 const display = ref(true)
 const showAll = ref(false)
+const statusRef = ref(props.status)
 
 function close() {
   display.value = false
@@ -15,6 +16,9 @@ function close() {
 
 function show(evt) {
   showAll.value = !showAll.value
+  if (statusRef.value === 'Не просмотрено') {
+    statusRef.value = 'В процессе'
+  }
 }
 
 const modalOpen = ref(false)
@@ -35,19 +39,19 @@ const modalData = {
 
 <template>
   <Teleport to="body">
-    <LkTaskModal v-show="modalOpen" @close="closeModal"/>
+    <LkTaskModal v-show="modalOpen" :close="closeModal" @close="closeModal"/>
   </Teleport>
   <div class="task" v-if="display" @click="show">
     <p class="medium-l task__title">{{ title }}
       <IconCross class="task__close" @click="close" v-if="status === 'Выполнено'"/>
     </p>
     <div class="task__status-block">
-      <IconDone filled v-if="status === 'Выполнено'" class="task__status-icon"/>
-      <IconEye filled v-if="status === 'Не просмотрено'" class="task__status-icon"/>
-      <IconErorr filled v-if="status === 'Не выполнено'" class="task__status-icon"/>
-      <IconUimProcess filled v-if="status === 'Обработка платежа'" class="task__status-icon"/>
-      <IconProcess filled v-if="status === 'В процессе'" class="task__status-icon"/>
-      <p class="task__status regular-s">{{ status }}</p>
+      <IconDone filled v-if="statusRef === 'Выполнено'" class="task__status-icon"/>
+      <IconEye filled v-if="statusRef === 'Не просмотрено'" class="task__status-icon"/>
+      <IconErorr filled v-if="statusRef === 'Не выполнено'" class="task__status-icon"/>
+      <IconUimProcess filled v-if="statusRef === 'Обработка платежа'" class="task__status-icon"/>
+      <IconProcess filled v-if="statusRef === 'В процессе'" class="task__status-icon"/>
+      <p class="task__status regular-s">{{ statusRef }}</p>
     </div>
     <p class="bold-l" v-if="!showAll">{{ value }} ₽</p>
     <div class="task__block" :class="showAll ? 'show' : ''">

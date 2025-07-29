@@ -1,10 +1,11 @@
 <template>
   <div class="page">
     <img class="lk-button" src="/assets/user.png" @click="() => navigateTo('/')" alt="">
-    <div class="sidebar">
-      <img src="/assets/sidebar.png" alt="">
-      <div class="analytics-button" @click="() => navigateTo('analytics')"></div>
-    </div>
+<!--    <div class="sidebar">-->
+<!--      <img src="/assets/sidebar.png" alt="">-->
+<!--      <div class="analytics-button" @click="() => navigateTo('analytics')"></div>-->
+<!--    </div>-->
+    <ElementsSidebar />
     <NuxtPage class="page-nuxt"/>
   </div>
 
@@ -24,8 +25,7 @@ p
   flex-direction: row
   gap: 20px
 
-.sidebar
-  position: relative
+
 
 .analytics-button
   position: absolute
@@ -55,6 +55,11 @@ p
   font-weight: 400
   font-size: 14px
   line-height: 18px
+
+.regular-l
+  font-weight: 400
+  font-size: 16px
+  line-height: 22px
 
 .regular-xxl
   font-weight: 400

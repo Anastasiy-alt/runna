@@ -1,8 +1,7 @@
 <script setup>
-// const props = defineProps([
-//   'title',
-//   'description',
-// ])
+const props = defineProps([
+  'close'
+])
 
 </script>
 
@@ -10,7 +9,7 @@
   <ElementsModal>
     <p class="tax-modal__title bold-xxxl">Что будет в случае неуплаты налога на прибыль?</p>
     <p class="tax-modal__description regular-m">Неуплата или неполная уплата сумм налога (сбора, страховых взносов) влечет взыскание штрафа в размере 20 процентов от неуплаченной суммы налога (сбора, страховых взносов).</p>
-    <ElementsButton class="tax-modal__button" :text="'Понятно'"/>
+    <ElementsButton class="tax-modal__button" @click="close" :text="'Понятно'"/>
   </ElementsModal>
 </template>
 
